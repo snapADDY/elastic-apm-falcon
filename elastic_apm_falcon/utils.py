@@ -1,5 +1,6 @@
 from elasticapm.utils import get_url_dict
 from falcon import Request, Response
+from falcon.util import http_status_to_code
 
 
 def get_data_from_request(request: Request) -> dict:
@@ -45,4 +46,4 @@ def get_data_from_response(response: Response) -> dict:
         The gathered information.
     """
     # collect relevant information from the response
-    return {"status_code": response.status, "headers": response.headers}
+    return {"status_code": http_status_to_code(response.status), "headers": response.headers}

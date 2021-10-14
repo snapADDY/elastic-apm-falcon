@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "elastic-apm-falcon"
-version = "0.3.0"
+version = "0.4.0"
 description = "Middleware for tracking Falcon requests/responses with Elastic APM."
 authors = ["Benedikt Brief <b.brief@snapaddy.com>"]
 readme = "README.md"

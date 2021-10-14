@@ -1,6 +1,5 @@
 import elasticapm
-from falcon import HTTP_INTERNAL_SERVER_ERROR, HTTP_OK, Request, Response
-from falcon import __version__ as falcon_version
+from falcon import HTTP_INTERNAL_SERVER_ERROR, Request, Response, __version__ as falcon_version
 
 from elastic_apm_falcon.utils import get_data_from_request, get_data_from_response
 

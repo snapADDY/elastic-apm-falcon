@@ -29,10 +29,9 @@ class ElasticApmMiddleware:
         # the result of the transaction is the HTTP status code
         transaction_result = resp.status
 
-        # if request did not succeed but has status 200, there was probably an uncaught exception
-        if not req_succeeded and transaction_result == HTTP_OK:
+        # if request did not succeed, set result to internal server error
+        if not req_succeeded:
             transaction_result = HTTP_INTERNAL_SERVER_ERROR
-            self.client.capture_exception(handled=False)
 
         # provide response data as callable (so it is only called if the request is sampled)
         elasticapm.set_context(lambda: get_data_from_response(resp), "response")

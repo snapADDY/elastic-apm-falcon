@@ -37,3 +37,8 @@ application = falcon.App(middleware=elastic_apm_middleware)
 # add routes and resources to your application below
 ...
 ```
+
+## License
+This package is licensed under the terms of the MIT license.
+
+Made with ♥ at [snapADDY](https://snapaddy.com/).

@@ -1,6 +1,5 @@
 from elasticapm.utils import get_url_dict
-from falcon import Request, Response
-from falcon.util import http_status_to_code
+from falcon import Request, Response, http_status_to_code
 
 
 def get_data_from_request(request: Request) -> dict:

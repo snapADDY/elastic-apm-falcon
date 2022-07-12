@@ -12,8 +12,10 @@ elastic-apm = "^6.0.0"
 falcon = "^3.0.0"
 
 [tool.poetry.dev-dependencies]
-black = "^21.9-beta.0"
-mypy = "^0.910"
+black = "^22.6.0"
+mypy = "^0.961"
+isort = "^5.10.1"
+pycln = "^2.0.1"
 
 [tool.black]
 line-length = 99

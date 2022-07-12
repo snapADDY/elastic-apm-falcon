@@ -1,8 +1,9 @@
 import elasticapm
-from falcon import HTTP_INTERNAL_SERVER_ERROR, Request, Response, __version__ as falcon_version
+from elasticapm.utils.disttracing import TraceParent
+from falcon import HTTP_INTERNAL_SERVER_ERROR, Request, Response
+from falcon import __version__ as falcon_version
 
 from elastic_apm_falcon.utils import get_data_from_request, get_data_from_response
-from elasticapm.utils.disttracing import TraceParent
 
 
 class ElasticApmMiddleware:

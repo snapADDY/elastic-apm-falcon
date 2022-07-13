@@ -1,5 +1,7 @@
 import elasticapm
-from falcon import HTTP_INTERNAL_SERVER_ERROR, Request, Response, __version__ as falcon_version
+from elasticapm.utils.disttracing import TraceParent
+from falcon import HTTP_INTERNAL_SERVER_ERROR, Request, Response
+from falcon import __version__ as falcon_version
 
 from elastic_apm_falcon.utils import get_data_from_request, get_data_from_response
 
@@ -18,8 +20,10 @@ class ElasticApmMiddleware:
 
     def process_request(self, req: Request, resp: Response):
         if not self.client.should_ignore_url(req.path):
+            trace_parent = TraceParent.from_headers(req.headers)
+
             # begin APM transaction
-            self.client.begin_transaction("request")
+            self.client.begin_transaction("request", trace_parent=trace_parent)
 
             # provide request data as callable (so it is only called if the request is sampled)
             elasticapm.set_context(lambda: get_data_from_request(req), "request")
